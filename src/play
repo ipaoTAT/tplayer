@@ -1,0 +1,18 @@
+#!/bin/bash
+
+killall minimad 1> /dev/null 2>&1
+sleep 0.5
+
+if [[ "c$1" == "c" ]] ;then
+#	echo "Need a Filename"
+	exit 0;
+fi
+
+if [[ ! -e ../mp3/$1.mp3 ]] ; then
+	echo "No File To Play" >> log
+	exit 0;
+fi
+
+../bin/minimad ../mp3/$1.mp3 | ../bin/pcm 2> /dev/null &
+
+exit 0;

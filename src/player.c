@@ -101,7 +101,7 @@ void *lrc_timer(void *argv){
 		}
 		if(cur_play_song == song_num - 1)cur_play_song = -1;
 		cur_play_song++;
-		play_song(NULL);
+		play_song("");
 		play_song(songs[cur_play_song].filename);
 		init_lrc(songs[cur_play_song].filename); 
 		cur_song = cur_play_song;
@@ -145,11 +145,11 @@ void *get_key_in(void *argv){
 				   init_lrc(songs[cur_song].filename); 
 				   cur_play_song = cur_song;
 				   break;
-			case ' ':  play_song(NULL);
+			case ' ':  play_song("");
 				   init_lrc(NULL);
 				   break;
 			case 'q':  
-				   play_song(NULL);
+				   play_song("");
 				   msleep(500);
 				   finish(0);
 				   exit(0);
@@ -253,12 +253,7 @@ else
 }
 
 int play_song(char *name){
-	/*
-	char cmd[100];
-	strncpy(cmd, "./playr ", 8);
-	strncpy(cmd + 8, name, strlen(name));
-	system(cmd);
-	*/
+        char cmd[100];
 	int pid;
 	if((pid = fork()) == 0)
 	{

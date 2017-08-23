@@ -1,6 +1,5 @@
-#ifndef PLAYER_H
-	#define PLAYER_H
-#endif
+#ifndef PLAYER_H	
+#define PLAYER_H
 #include"init.h"
 
 
@@ -49,3 +48,4 @@ int print_list();
 int play_song(char *);
 
 static void finish(int sig);
+#endif

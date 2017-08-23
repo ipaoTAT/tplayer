@@ -1,3 +1,5 @@
+#ifndef INFO_H
+#define INFO_H
 #include<stdio.h>
 
 #define SIZE_OF_TAG(size) (size[0]&0x7F)*0x200000+(size[1]&0x7F)*0x4000+(size[2]&0x7F)*0x80+(size[3]&0x7F)
@@ -32,21 +34,11 @@ typedef struct tag_frame{
 	char body;
 } tag_frame;
 
-inline tag_frame_head *get_first_frame(tag_head *tag){
-	return (tag_frame_head *)((char *)tag + 10);
-}
+tag_frame_head *get_first_frame(tag_head *tag);
 
-inline tag_frame_head *next_frame(tag_head *head, tag_frame_head *cur){
-
-	tag_frame_head *next = (tag_frame_head *)((char *)cur + 10 + SIZE_OF_FRAME_BODY(cur -> size));
-	if((int)next - (int)head > SIZE_OF_TAG(head -> size))
-	{
-		next = NULL;
-	}
-	return next;
-
-}
+tag_frame_head *next_frame(tag_head *head, tag_frame_head *cur);
 
 extern int song_init(song_info *);
 
 extern song_info *song_info_init(int, char**);
+#endif

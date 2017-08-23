@@ -9,6 +9,21 @@
 #include"info.h"
 //extern int pmsg(char *);
 
+tag_frame_head *get_first_frame(tag_head *tag){
+	return (tag_frame_head *)((char *)tag + 10);
+}
+
+tag_frame_head *next_frame(tag_head *head, tag_frame_head *cur){
+
+	tag_frame_head *next = (tag_frame_head *)((char *)cur + 10 + SIZE_OF_FRAME_BODY(cur -> size));
+	if((unsigned long)next - (unsigned long)head > SIZE_OF_TAG(head -> size))
+	{
+		next = NULL;
+	}
+	return next;
+
+}
+
 int pre_check(char *buf){
 
 	int i;

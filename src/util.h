@@ -1,7 +1,6 @@
 
 #ifndef UTIL_H
-	#define UTIL_H
-#endif
+#define UTIL_H
 #include <pthread.h>
 
 typedef struct line_info{
@@ -31,8 +30,9 @@ extern pthread_mutex_t exit_mutex;
 /*functions*/
 
 
-inline int end_with(char *str, char *pattern);
-inline int add_end(char *str, char *pattern);
-inline int split_end(char *str, char *pattern);
+int end_with(char *str, char *pattern);
+int add_end(char *str, char *pattern);
+int split_end(char *str, char *pattern);
 
 int line_fmt(char *src, line_info *dst);
+#endif

@@ -1,6 +1,5 @@
 #ifndef INIT_H
-	#define INIT_H
-#endif
+#define INIT_H
 
 extern "C"{
 #include <pthread.h>
@@ -39,3 +38,4 @@ extern inline int add_str(int, int, char *, int);
 int init_screen();
 int init_lrc(char *name);
 int init_list(char *dirname);
+#endif

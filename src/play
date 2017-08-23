@@ -1,5 +1,7 @@
 #!/bin/bash
 
+log="../log/play.log"
+
 killall minimad 1> /dev/null 2>&1
 sleep 0.5
 
@@ -9,10 +11,11 @@ if [[ "c$1" == "c" ]] ;then
 fi
 
 if [[ ! -e ../mp3/$1.mp3 ]] ; then
-	echo "No File To Play" >> log
+	echo "No File To Play" >> $log
 	exit 0;
 fi
 
+echo "begin play $1" >> $log
 ../bin/minimad ../mp3/$1.mp3 | ../bin/pcm 2> /dev/null &
 
 exit 0;
